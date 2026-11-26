@@ -1,0 +1,21 @@
+# downloaded data (re-fetched automatically)
+*.dat
+*.cov
+cov_raw.txt
+pp.dat
+d.pkl
+C.npy
+pantheon_plus_analysis/chains/*.npz
+# python / jupyter
+__pycache__/
+.ipynb_checkpoints/
+# LaTeX build products
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg

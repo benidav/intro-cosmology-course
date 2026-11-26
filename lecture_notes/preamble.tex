@@ -1,0 +1,101 @@
+% =====================================================================
+%  Shared preamble — lecture notes "Introduction to Cosmology" (9 h)
+%  Compile:  lualatex cosmo_lectures.tex   (twice, for the TOC)
+% =====================================================================
+\usepackage[a4paper,top=2.2cm,bottom=2.2cm,left=2.2cm,right=2.2cm]{geometry}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb}
+\usepackage[bidi=basic]{babel}
+\babelprovide[import,main]{hebrew}
+\babelprovide[import]{english}
+
+% ---- fonts: Culmus (Overleaf/Linux) -> Windows David -> FreeSerif ----
+\IfFontExistsTF{David CLM}{%
+  \babelfont{rm}{David CLM}\babelfont{sf}{Simple CLM}\babelfont{tt}{Miriam Mono CLM}%
+}{\IfFontExistsTF{David}{%
+  \babelfont{rm}[ItalicFeatures={FakeSlant=0.15}]{David}\babelfont{sf}{Arial}\babelfont{tt}{Courier New}%
+}{\IfFileExists{/mnt/c/Windows/Fonts/david.ttf}{%
+  \babelfont{rm}[Path=/mnt/c/Windows/Fonts/,Extension=.ttf,BoldFont=davidbd,ItalicFont=david,
+    ItalicFeatures={FakeSlant=0.15}]{david}%
+  \babelfont{sf}[Path=/mnt/c/Windows/Fonts/,Extension=.ttf,BoldFont=arialbd]{arial}%
+  \babelfont{tt}[Path=/mnt/c/Windows/Fonts/,Extension=.ttf]{cour}%
+}{%
+  \babelfont{rm}{FreeSerif}\babelfont{sf}{FreeSans}\babelfont{tt}{FreeMono}%
+}}}
+\babelfont[english]{rm}{Latin Modern Roman}
+\babelfont[english]{tt}{Latin Modern Mono}
+
+\usepackage{xcolor}
+\usepackage[framemethod=default]{mdframed}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{needspace}
+\usepackage{listings}
+\usepackage[hidelinks]{hyperref}
+\lstset{basicstyle=\ttfamily\footnotesize,keywordstyle=\color{qblue}\bfseries,
+  commentstyle=\color{ggreen}\itshape,frame=single,rulecolor=\color{black!30},
+  backgroundcolor=\color{black!2},breaklines=true,showstringspaces=false,
+  language=Python,columns=fullflexible}
+
+\renewcommand{\labelitemi}{\ensuremath{\bullet}}
+\renewcommand{\labelitemii}{\ensuremath{\circ}}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=2pt}
+\setlist[enumerate]{leftmargin=1.6em,itemsep=1pt,topsep=2pt}
+
+% ---- colours (as in the original course) ----
+\definecolor{qblue}{RGB}{20,60,120}
+\definecolor{ggreen}{RGB}{20,100,70}
+\definecolor{kpurple}{RGB}{95,45,110}
+\definecolor{worange}{RGB}{170,90,10}
+
+\newmdenv[linecolor=kpurple,linewidth=1pt,backgroundcolor=kpurple!4,
+  innertopmargin=6pt,innerbottommargin=6pt,innerleftmargin=8pt,innerrightmargin=8pt,
+  skipabove=7pt,skipbelow=7pt]{keybox}
+\newmdenv[linecolor=worange,linewidth=1pt,backgroundcolor=worange!5,
+  innertopmargin=6pt,innerbottommargin=6pt,innerleftmargin=8pt,innerrightmargin=8pt,
+  skipabove=7pt,skipbelow=7pt]{warnbox}
+\newmdenv[linecolor=ggreen,linewidth=1pt,backgroundcolor=ggreen!5,
+  innertopmargin=6pt,innerbottommargin=6pt,innerleftmargin=8pt,innerrightmargin=8pt,
+  skipabove=7pt,skipbelow=7pt]{goalbox}
+\newmdenv[linecolor=qblue,linewidth=1.1pt,backgroundcolor=qblue!5,
+  innertopmargin=6pt,innerbottommargin=6pt,innerleftmargin=8pt,innerrightmargin=8pt,
+  skipabove=8pt,skipbelow=6pt]{exbox}
+\newmdenv[linecolor=black!35,linewidth=0.7pt,backgroundcolor=black!3,
+  innertopmargin=6pt,innerbottommargin=6pt,innerleftmargin=8pt,innerrightmargin=8pt,
+  skipabove=4pt,skipbelow=8pt]{solbox}
+
+% ---- macros ----
+\newcommand{\en}[1]{\foreignlanguage{english}{#1}}
+\newcommand{\Msun}{M_{\odot}}
+\newcommand{\Mpc}{\mathrm{Mpc}}
+\newcommand{\kpc}{\mathrm{kpc}}
+\newcommand{\Gyr}{\mathrm{Gyr}}
+\newcommand{\kms}{\mathrm{km\,s^{-1}}}
+\newcommand{\kmsMpc}{\mathrm{km\,s^{-1}\,Mpc^{-1}}}
+\newcommand{\LCDM}{\Lambda\mathrm{CDM}}
+
+% lecture header: \lecture{number}{title}{time budget + one-line content}
+\newcounter{lec}
+\counterwithin*{subsection}{lec}
+\renewcommand{\thesubsection}{\thelec.\arabic{subsection}}
+\makeatletter\renewcommand{\fps@figure}{htbp}\makeatother
+\newcommand{\lecture}[3]{%
+  \clearpage\refstepcounter{lec}%
+  \noindent\colorbox{qblue}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
+   \color{white}\bfseries\Large הרצאה #1: #2\\[3pt]\normalsize\mdseries #3}}%
+  \addcontentsline{toc}{section}{הרצאה #1: #2}\par\medskip}
+
+% exercises: numbered per lecture (1.1, 1.2, ...)
+\newcounter{ex}[lec]
+\newenvironment{exercise}[1]{%
+  \refstepcounter{ex}\begin{exbox}\textbf{\textcolor{qblue}{תרגיל \thelec.\theex\ --- #1.}}\ }%
+  {\end{exbox}}
+\newcommand{\soln}[1]{\par\smallskip\noindent\textbf{פתרון #1.}\ }
+
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[R]{\small מבוא לקוסמולוגיה --- רשימות הרצאה}
+\fancyhead[L]{\small\hbox{\textdir TLT\relax\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\setlength{\parindent}{0pt}\setlength{\parskip}{4pt}

@@ -1,0 +1,70 @@
+% =====================================================================
+%  מבוא לקוסמולוגיה — רשימות הרצאה (9 שעות, 3 מפגשים × 3 שעות)
+%  קומפילציה: lualatex cosmo_lectures.tex  (פעמיים)
+%  פתרונות התרגילים: solutions.tex (למרצה)
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+\input{preamble}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries מבוא לקוסמולוגיה}\\[6pt]
+{\large רשימות הרצאה --- 9 שעות (שלושה מפגשים בני שלוש שעות)}\\[4pt]
+{\normalsize שנה ג' בפיזיקה / תואר שני, שלב מתחילים}
+\end{center}
+
+\subsection*{מפת הקורס}
+\begin{center}\small
+\begin{tabular}{@{}clll@{}}
+\toprule
+מפגש & זמן & הרצאה & מה לוקחים הביתה \\ \midrule
+1 & 2 ש' & 1. משוואות פרידמן, פתרונות, זמנים ומרחקים & $H(z)$, $t_0$, $D_M,D_A,D_L$ \\
+  & 1 ש' & 2א. הסקה בייסיאנית ו-\en{MCMC} & נראות, מוקדמת, דגימה, אבחון \\ \midrule
+2 & 1 ש' & 2ב. סופרנובות ואנרגיה אפלה (מחברת \en{Pantheon+}) & $\mu(z)$, ההיסט $\mathcal M$, $(\Omega_m,w)$ \\
+  & 1 ש' & 3. חומר אפל והרשת הקוסמית: הפרעות ואורך ג'ינס & $\ddot\delta+2H\dot\delta=4\pi G\bar\rho\delta$, $\lambda_J$ \\
+  & 1 ש' & 4. עדויות לחומר אפל: ויריאל, קריסה כדורית, עקומות סיבוב, \en{NFW}, \en{MOND} & $M=5\sigma^2R/G$, $\delta_c$, $18\pi^2$, $v_c(r)$ \\ \midrule
+3 & 1.5 ש' & 5. היקום החם, הסקאלה האקוסטית ו-\en{BAO} (\en{DESI}) & $r_s$, $\theta_\star$, $D/r_d$, המתחים \\
+  & 1.5 ש' & 6. אינפלציה & $\epsilon,\eta$, $n_s$, $r$ \\ \bottomrule
+\end{tabular}
+\end{center}
+
+בכל הרצאה: מטרות, תיאוריה בקיצור, ובסופה 3 תרגילים שנפתרים בכיתה אחרי התיאוריה; הפתרון המלא מופיע בתיבה אפורה מיד אחרי כל תרגיל.
+
+\textbf{מוסכמות.} $c=1$ רק כשנאמר במפורש. $a_0=1$, $1+z=1/a$, $H_0=100\,h\,\kmsMpc$, $c/H_0=2998\,h^{-1}\Mpc$, $1/H_0=9.78\,h^{-1}\Gyr$. ערכי ייחוס (\en{Planck 2018}): $h=0.674$, $\Omega_m=0.315$, $\Omega_bh^2=0.0224$, $\Omega_mh^2=0.143$.
+
+\tableofcontents
+
+\input{L1_friedmann}
+\input{L2_mcmc_sn}
+\input{L3_structure}
+\input{L4_dm_evidence}
+\input{L5_cmb_bao}
+\input{L6_inflation}
+
+\clearpage
+\section*{נספח: קבועים ונוסחאות}
+\addcontentsline{toc}{section}{נספח: קבועים ונוסחאות}
+\begin{center}\small
+\begin{tabular}{@{}ll@{}}
+\toprule
+$G=6.674\times10^{-11}\,\mathrm{m^3\,kg^{-1}\,s^{-2}}=4.30\times10^{-6}\,\kpc\,(\kms)^2/\Msun$ & $1\,\Mpc=3.086\times10^{22}\,\mathrm m$ \\
+$\rho_{c,0}=3H_0^2/8\pi G=1.878\times10^{-26}h^2\,\mathrm{kg\,m^{-3}}=2.775\times10^{11}h^2\,\Msun\,\Mpc^{-3}$ & $\Msun=1.989\times10^{30}\,\mathrm{kg}$ \\
+$T_0=2.7255\,\mathrm K$, \ $\Omega_\gamma h^2=2.47\times10^{-5}$, \ $\Omega_rh^2\simeq4.2\times10^{-5}$ (עם נייטרינו) & $k_B=8.617\times10^{-5}\,\mathrm{eV\,K^{-1}}$ \\
+$M_{\rm Pl}=(8\pi G)^{-1/2}=2.435\times10^{18}\,\mathrm{GeV}$ (מסת פלאנק המוקטנת) & $1\,\mathrm{yr}=3.156\times10^7\,\mathrm s$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection*{לקריאה}
+\begin{itemize}
+\item \en{B. Ryden, \emph{Introduction to Cosmology}, 2nd ed.\ (Cambridge, 2017)} --- הרצאות 1, 4, 5.
+\item \en{D. Baumann, \emph{Cosmology} (Cambridge, 2022)} --- הרצאות 3, 5, 6.
+\item \en{D.~W. Hogg, \emph{Distance measures in cosmology}, arXiv:astro-ph/9905116} --- הרצאה 1.
+\item \en{Foreman-Mackey et al.\ 2013, PASP 125, 306 (\texttt{emcee}); Brout et al.\ 2022, ApJ 938, 110 (Pantheon+)} --- הרצאה 2.
+\item \en{Kahn \& Woltjer 1959, ApJ 130, 705; Gunn \& Gott 1972, ApJ 176, 1; Lahav et al.\ 1991, MNRAS 251, 128; Bryan \& Norman 1998, ApJ 495, 80; Li \& White 2008, MNRAS 384, 1459; Pavlidou \& Tomaras 2014, JCAP 09, 020; Naderi, Malekjani \& Pace 2015, MNRAS 447, 1873} --- הרצאה 4 (קריסה כדורית).
+\item \en{Navarro, Frenk \& White 1997, ApJ 490, 493; Famaey \& McGaugh 2012, Living Rev.\ Rel.\ 15, 10} --- הרצאה 4.
+\item \en{DESI Collaboration 2025, arXiv:2503.14738 (DR2 BAO)} --- הרצאה 5.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,21 @@
+% ---- shared definitions for the homework sheets (input after ../lecture_notes/preamble) ----
+\newcounter{hwq}
+\newenvironment{question}[2]{%
+  \refstepcounter{hwq}\needspace{5\baselineskip}%
+  \begin{exbox}\textbf{\textcolor{qblue}{שאלה \thehwq\ --- #1}}\hfill\textbf{(#2 נק')}\par\smallskip}%
+  {\end{exbox}}
+\newenvironment{parts}{\begin{enumerate}[label=(\alph*),itemsep=3pt]}{\end{enumerate}}
+\newcommand{\hwtitle}[3]{%
+  \noindent\colorbox{qblue}{\parbox{\dimexpr\textwidth-2\fboxsep}{%
+   \color{white}\bfseries\Large תרגיל בית #1: #2\\[3pt]\normalsize\mdseries #3}}\par\medskip}
+\newcommand{\hwrules}[1]{%
+\begin{goalbox}\small\textbf{הנחיות.}
+\begin{itemize}
+\item ארבע שאלות, 25 נקודות כל אחת. השאלות בלתי תלויות זו בזו.
+\item אלא אם נאמר אחרת: $\LCDM$ שטוח עם $h=0.674$, $\Omega_m=0.315$, $\Omega_\Lambda=1-\Omega_m$ (קרינה מוזנחת), ו-$c/H_0=4448\,\Mpc$, $1/H_0=14.51\,\Gyr$.
+\item רוב הסעיפים אנליטיים: גזירה, ואז הצבת מספרים במחשבון. רק סעיפים המסומנים \textbf{[מחשב]} דורשים קוד; בהם צרפו את הקוד (\en{Python} מומלץ), סמנו צירים ויחידות, ושמרו את ה-\en{seed}.
+\item כל טענה, נתון או ערך שלא נלמדו בהרצאה --- עם ציטוט (מחבר, שנה, כתב עת).
+#1
+\end{itemize}\end{goalbox}}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\hbox{\textdir TLT\relax\thepage}}
